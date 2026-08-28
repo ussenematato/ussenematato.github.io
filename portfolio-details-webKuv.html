@@ -1,300 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Portfolio Details - Websites</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuvatla Customizer – Website | Ussene Matato</title>
+<meta name="description" content="Kuvatla Customizer — corporate website built with HTML, CSS and JavaScript.">
+<link href="assets/img/my-profile-img.png" rel="icon">
+<link href="assets/img/my-profile-img.png" rel="apple-touch-icon">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#fdfdfc; --bg-soft:#f6f5f2; --surface:#ffffff;
+    --text:#14140f; --text-2:#514f47; --text-mute:#8b8a80;
+    --line:#e7e5de; --line-strong:#d7d5cb;
+    --accent:#2a78d6; --accent-2:#eb6834; --accent-3:#1baf7a;
+    --accent-fill:#eaf2fc; --accent2-fill:#fdece4; --accent3-fill:#e6f8f1;
+    --shadow: 0 1px 2px rgba(20,20,15,.04), 0 8px 24px rgba(20,20,15,.05);
+    --radius:16px;
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --bg:#0b0c0e; --bg-soft:#111318; --surface:#15171c;
+    --text:#f4f4f2; --text-2:#c2c1ba; --text-mute:#83837c;
+    --line:#242730; --line-strong:#30333d;
+    --accent:#4c93ec; --accent-2:#f0794a; --accent-3:#25c58a;
+    --accent-fill:#132338; --accent2-fill:#33200f; --accent3-fill:#0f2a20;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    transition: background .25s ease, color .25s ease;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .eyebrow{
+    font-size:12.5px; letter-spacing:.10em; text-transform:uppercase; font-weight:700;
+    color:var(--accent); margin:0 0 10px;
+  }
+  h2.h{font-size:26px; margin:0 0 24px; letter-spacing:-0.01em; font-weight:700;}
+  .lede{color:var(--text-2); font-size:16px; line-height:1.75; max-width:700px;}
 
-    <!-- Favicons -->
-    <link href="assets/img/my-profile-img.png" rel="icon" />
-    <link href="assets/img/my-profile-img.png" rel="apple-touch-icon" />
+  nav.topnav{
+    position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav .inner{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1100px; margin:0 auto;}
+  .brand{font-weight:800; font-size:15px; letter-spacing:-0.01em; text-decoration:none;}
+  .brand span{color:var(--accent);}
+  .nav-right{display:flex; align-items:center; gap:10px;}
+  .back-link{display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:var(--text-2); text-decoration:none;}
+  .back-link:hover{color:var(--accent);}
+  .icon-btn{
+    border:1px solid var(--line-strong); background:var(--surface); color:var(--text-2);
+    border-radius:9px; padding:7px 11px; font-size:12.5px; font-weight:600; cursor:pointer;
+  }
+  .icon-btn:hover{color:var(--text); border-color:var(--accent);}
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+  .detail-hero{padding:56px 0 8px;}
+  .chip{
+    font-size:12px; font-weight:600; padding:5px 11px; border-radius:999px;
+    background:var(--bg-soft); border:1px solid var(--line); color:var(--text-2);
+    display:inline-block; margin-bottom:16px;
+  }
+  .detail-hero h1{font-size:clamp(28px,4.5vw,42px); line-height:1.12; margin:0 0 14px; letter-spacing:-0.02em; font-weight:800;}
+  .detail-hero .tagline{font-size:16px; color:var(--text-2); line-height:1.7; max-width:700px; margin:0 0 24px;}
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  .info-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:12px;}
+  @media (max-width:700px){ .info-grid{grid-template-columns:1fr;} }
+  .info-box{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:15px 18px;}
+  .info-box .k{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-mute); font-weight:700; margin:0 0 6px;}
+  .info-box .v{font-size:14.5px; color:var(--text); font-weight:600;}
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
+  .tech-row{display:flex; flex-wrap:wrap; gap:6px; margin-top:18px;}
+  .tech-tag{font-size:11.5px; padding:4px 10px; border-radius:6px; background:var(--bg-soft); color:var(--text-mute); border:1px solid var(--line);}
 
-    <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  </head>
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:820px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .gallery-grid{grid-template-columns:1fr;} }
+  .gallery-grid img{
+    width:100%; height:220px; object-fit:cover; border-radius:12px; border:1px solid var(--line);
+    cursor:zoom-in; background:var(--bg-soft); transition:opacity .2s ease, transform .2s ease; display:block;
+  }
+  .gallery-grid img:hover{opacity:.88; transform:translateY(-2px);}
 
-  <body class="portfolio-details-page">
-    <header id="header" class="header dark-background d-flex flex-column">
-      <i class="header-toggle d-xl-none bi bi-list"></i>
+  .lightbox{
+    position:fixed; inset:0; background:rgba(10,10,8,.88); display:flex; align-items:center;
+    justify-content:center; padding:32px; z-index:100; cursor:zoom-out;
+  }
+  .lightbox[hidden]{display:none;}
+  .lightbox img{max-width:100%; max-height:100%; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,.5);}
 
-      <div class="profile-img">
-        <img
-          src="assets/img/my-profile-img.png"
-          alt=""
-          class="img-fluid rounded-circle"
-        />
-      </div>
+  footer{padding:32px 0; text-align:center; font-size:12.5px; color:var(--text-mute); border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
 
-      <a
-        href="index.html"
-        class="logo d-flex align-items-center justify-content-center"
-      >
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Ussene Matato</h1>
-      </a>
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="index.html">Ussene<span>.</span>Matato</a>
+    <div class="nav-right">
+      <a class="back-link" href="index.html#portfolio">← Back to portfolio</a>
+      <button class="icon-btn" id="themeToggle" type="button">Dark</button>
+    </div>
+  </div>
+</nav>
 
-      <div class="social-links text-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://github.com/ussenematato" class="github"
-          ><i class="bi bi-github"></i
-        ></a>
-        <!-- <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> -->
-        <!-- <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> -->
-        <!-- <a href="#" class="google-plus"><i class="bi bi-skype"></i></a> -->
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      </div>
+<header class="detail-hero">
+  <div class="wrap">
+    <span class="chip">Enterprise website</span>
+    <h1>Kuvatla Customizer Website</h1>
+    <p class="tagline">Corporate website for Kuvatla Customizer, focused on a modern, responsive design that highlights the brand identity.</p>
+  </div>
+</header>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li>
-            <a href="./#hero" class="active"
-              ><i class="bi bi-house navicon"></i>Home</a
-            >
-          </li>
-          <li>
-            <a href="./#about"><i class="bi bi-person navicon"></i> About</a>
-          </li>
-          <li>
-            <a href="./#resume"
-              ><i class="bi bi-file-earmark-text navicon"></i> Resume</a
-            >
-          </li>
-          <li>
-            <a href="./#portfolio"
-              ><i class="bi bi-images navicon"></i> Portfolio</a
-            >
-          </li>
-          <li>
-            <a href="./#services"
-              ><i class="bi bi-hdd-stack navicon"></i> Services</a
-            >
-          </li>
-          <!-- <li class="dropdown">
-            <a href="#"
-              ><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span>
-              <i class="bi bi-chevron-down toggle-dropdown"></i
-            ></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown">
-                <a href="#"
-                  ><span>Deep Dropdown</span>
-                  <i class="bi bi-chevron-down toggle-dropdown"></i
-                ></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li> -->
-          <li>
-            <a href="./#contact"
-              ><i class="bi bi-envelope navicon"></i> Contact</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+<section>
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-box"><p class="k">Category</p><p class="v">Enterprise website</p></div>
+      <div class="info-box"><p class="k">Client</p><p class="v">Kuvatla Customizer</p></div>
+      <div class="info-box"><p class="k">Project date</p><p class="v">05 May, 2025</p></div>
+    </div>
+    <div class="tech-row">
+      <span class="tech-tag">HTML</span>
+      <span class="tech-tag">CSS</span>
+      <span class="tech-tag">JavaScript</span>
+      <span class="tech-tag">Responsive Design</span>
+    </div>
+  </div>
+</section>
 
-    <main class="main">
-      <!-- Page Title -->
-      <div class="page-title dark-background">
-        <div
-          class="container d-lg-flex justify-content-between align-items-center"
-        >
-          <h1 class="mb-2 mb-lg-0">Portfolio Details</h1>
-          <nav class="breadcrumbs">
-            <ol>
-              <li><a href="index.html">Home</a></li>
-              <li class="current">Portfolio Details</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-      <!-- End Page Title -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Gallery</p>
+    <h2 class="h">Project screens</h2>
+    <div class="gallery-grid" id="gallery">
+      <img src="assets/img/portfolio/Website/home.png" alt="Kuvatla Customizer website — home">
+      <img src="assets/img/portfolio/Website/2.png" alt="Kuvatla Customizer website screen 2">
+      <img src="assets/img/portfolio/Website/3.png" alt="Kuvatla Customizer website screen 3">
+      <img src="assets/img/portfolio/Website/4.png" alt="Kuvatla Customizer website screen 4">
+      <img src="assets/img/portfolio/Website/5.png" alt="Kuvatla Customizer website screen 5">
+      <img src="assets/img/portfolio/Website/6.png" alt="Kuvatla Customizer website screen 6">
+      <img src="assets/img/portfolio/Website/7.png" alt="Kuvatla Customizer website screen 7">
+      <img src="assets/img/portfolio/Website/8.png" alt="Kuvatla Customizer website screen 8">
+    </div>
+  </div>
+</section>
 
-      <!-- Portfolio Details Section -->
-      <section id="portfolio-details" class="portfolio-details section">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row gy-4">
-            <div class="col-lg-8">
-              <div class="portfolio-details-slider swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                  {
-                    "loop": true,
-                    "speed": 600,
-                    "autoplay": {
-                      "delay": 5000
-                    },
-                    "slidesPerView": "auto",
-                    "pagination": {
-                      "el": ".swiper-pagination",
-                      "type": "bullets",
-                      "clickable": true
-                    }
-                  }
-                </script>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">About</p>
+    <h2 class="h">The project</h2>
+    <p class="lede">
+      Corporate website for Kuvatla Customizer developed using HTML, CSS, and JavaScript. The project
+      focused on delivering a modern, responsive design that highlights the brand identity and ensures
+      easy navigation. This work helped strengthen the company's online presence and improve customer
+      engagement.
+    </p>
+  </div>
+</section>
 
-                <div class="swiper-wrapper align-items-center">
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/Website/home.png" alt="" />
-                  </div>
+<footer>© 2026 Ussene Carlos Matato · Maputo, Mozambique</footer>
 
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/Website/2.png" alt="" />
-                  </div>
+<div class="lightbox" id="lightbox" hidden>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/Website/3.png" alt="" />
-                  </div>
+<script>
+(function(){
+  const root = document.documentElement;
+  let dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  function applyTheme(){
+    root.setAttribute("data-theme", dark ? "dark" : "light");
+    document.getElementById("themeToggle").textContent = dark ? "Light" : "Dark";
+  }
+  document.getElementById("themeToggle").addEventListener("click", ()=>{
+    dark = !dark; applyTheme();
+  });
+  applyTheme();
 
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/Website/4.png" alt="" />
-                  </div>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  document.getElementById("gallery").addEventListener("click", (e)=>{
+    if(e.target.tagName === "IMG"){
+      lightboxImg.src = e.target.src;
+      lightboxImg.alt = e.target.alt;
+      lightbox.hidden = false;
+    }
+  });
+  lightbox.addEventListener("click", ()=>{ lightbox.hidden = true; lightboxImg.src = ""; });
+})();
+</script>
 
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/Website/5.png" alt="" />
-                  </div>
-
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/Website/6.png" alt="" />
-                  </div>
-
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/Website/7.png" alt="" />
-                  </div>
-
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/Website/8.png" alt="" />
-                  </div>
-                </div>
-                <div class="swiper-pagination"></div>
-              </div>
-            </div>
-
-            <div class="col-lg-4">
-              <div
-                class="portfolio-info"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <h3>Project information</h3>
-                <ul>
-                  <li><strong>Category</strong>: Interprise Website</li>
-                  <li><strong>Client</strong>: Kuvatla Custumizer</li>
-                  <li><strong>Project date</strong>: 05 May, 2025</li>
-                  <li>
-                    <strong>Project URL</strong>:
-                    <a href="#">www.example.com</a>
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="portfolio-description"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <h2>Kuvatla Custumizer Website</h2>
-                <p>
-                  Corporate website for Kuvatla Customizer developed using
-                  HTML, CSS, and JavaScript. The project focused on delivering a
-                  modern, responsive design that highlights the brand identity
-                  and ensures easy navigation. This work helped strengthen the
-                  company’s online presence and improve customer engagement.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Portfolio Details Section -->
-    </main>
-
-    <footer id="footer" class="footer position-relative light-background">
-      <div class="container">
-        <div class="copyright text-center">
-          <p>
-            © <span>Copyright</span>
-            <strong class="px-1 sitename">Ussene Matato</strong>
-            <span>All Rights Reserved</span>
-          </p>
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-          <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-        </div>
-      </div>
-    </footer>
-
-    <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
-
-    <!-- Preloader -->
-    <div id="preloader"></div>
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-  </body>
+</body>
 </html>
