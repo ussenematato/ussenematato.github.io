@@ -10,23 +10,26 @@
 <style>
   :root{
     color-scheme: light;
-    --bg:#fdfdfc; --bg-soft:#f6f5f2; --surface:#ffffff;
-    --text:#14140f; --text-2:#514f47; --text-mute:#8b8a80;
-    --line:#e7e5de; --line-strong:#d7d5cb;
-    --accent:#2a78d6; --accent-2:#eb6834; --accent-3:#1baf7a;
-    --accent-fill:#eaf2fc; --accent2-fill:#fdece4; --accent3-fill:#e6f8f1;
-    --shadow: 0 1px 2px rgba(20,20,15,.04), 0 8px 24px rgba(20,20,15,.05);
+    --bg:#F5F8FC; --bg-soft:#EAF0F7; --surface:#FFFFFF;
+    --text:#10233D; --text-2:#52657A; --text-mute: color-mix(in srgb, var(--text-2) 62%, var(--bg));
+    --line:#D6E0EC; --line-strong: color-mix(in srgb, var(--line) 45%, var(--text-2));
+    --accent:#2563EB; --accent-hover:#1D4ED8;
+    --accent-2:#0891B2; --accent-2-text:#0A7490; --accent-3:#15803D; --error:#DC2626;
+    --accent-fill:#E1EBFD; --accent2-fill:#DAF2F7; --accent3-fill:#DCF2E2;
+    --avatar-ring-bg:var(--bg-soft); --avatar-ring-border: color-mix(in srgb, var(--accent) 38%, var(--surface)); --avatar-ring-pad:8px;
+    --shadow: 0 1px 2px rgba(16,35,61,.05), 0 10px 28px rgba(16,35,61,.08);
     --radius:16px;
-    --serious:#ec835a;
   }
   :root[data-theme="dark"]{
     color-scheme: dark;
-    --bg:#0b0c0e; --bg-soft:#111318; --surface:#15171c;
-    --text:#f4f4f2; --text-2:#c2c1ba; --text-mute:#83837c;
-    --line:#242730; --line-strong:#30333d;
-    --accent:#4c93ec; --accent-2:#f0794a; --accent-3:#25c58a;
-    --accent-fill:#132338; --accent2-fill:#33200f; --accent3-fill:#0f2a20;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
+    --bg:#0B1526; --bg-soft:#122A43; --surface:#172A40;
+    --text:#F8FAFC; --text-2:#A8B3C7; --text-mute: color-mix(in srgb, var(--text-2) 58%, var(--bg));
+    --line:#29415C; --line-strong: color-mix(in srgb, var(--line) 45%, var(--text-2));
+    --accent:#3B82F6; --accent-hover:#60A5FA;
+    --accent-2:#22D3EE; --accent-2-text:#22D3EE; --accent-3:#4ADE80; --error:#F87171;
+    --accent-fill:#16294A; --accent2-fill:#0E3742; --accent3-fill:#123821;
+    --avatar-ring-bg:transparent; --avatar-ring-border:transparent; --avatar-ring-pad:0px;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 14px 34px rgba(0,0,0,.42);
   }
 
   *{box-sizing:border-box;}
@@ -43,7 +46,7 @@
   section + section, header.hero + section{border-top:1px solid var(--line);}
   .eyebrow{
     font-size:12.5px; letter-spacing:.10em; text-transform:uppercase; font-weight:700;
-    color:var(--accent); margin:0 0 10px;
+    color:var(--accent-2-text); margin:0 0 10px;
   }
   h2.h{font-size:30px; margin:0 0 34px; letter-spacing:-0.01em; font-weight:700;}
   .lede{color:var(--text-2); font-size:16.5px; line-height:1.7; max-width:680px;}
@@ -59,26 +62,27 @@
   .brand span{color:var(--accent);}
   .nav-links{display:flex; gap:22px; list-style:none; margin:0; padding:0; font-size:13.5px; color:var(--text-2);}
   .nav-links a{text-decoration:none; padding:4px 0; border-bottom:2px solid transparent;}
-  .nav-links a:hover{color:var(--text); border-color:var(--accent);}
+  .nav-links a:hover{color:var(--text); border-color:var(--accent-2);}
   .nav-right{display:flex; align-items:center; gap:8px;}
   .icon-btn{
     border:1px solid var(--line-strong); background:var(--surface); color:var(--text-2);
     border-radius:9px; padding:7px 11px; font-size:12.5px; font-weight:600; cursor:pointer;
     display:flex; align-items:center; gap:6px;
   }
-  .icon-btn:hover{color:var(--text); border-color:var(--accent);}
+  .icon-btn:hover{color:var(--text); border-color:var(--accent-2);}
   @media (max-width:760px){ .nav-links{display:none;} }
 
   /* HERO */
   .hero{padding:72px 0 36px;}
   .hero .wrap{display:flex; flex-direction:column; align-items:center; text-align:center;}
-  .avatar{
-    width:224px; height:224px; border-radius:50%; object-fit:cover;
-    border:3px solid var(--surface); box-shadow:var(--shadow); background:var(--bg-soft);
-    margin-bottom:26px;
+  .avatar-frame{
+    width:240px; height:240px; border-radius:50%; flex-shrink:0;
+    background:var(--avatar-ring-bg); border:3px solid var(--avatar-ring-border); padding:var(--avatar-ring-pad);
+    box-shadow:var(--shadow); margin-bottom:26px;
   }
+  .avatar{width:100%; height:100%; border-radius:50%; object-fit:cover; display:block;}
   @media (max-width:640px){
-    .avatar{width:168px; height:168px; margin-bottom:20px;}
+    .avatar-frame{width:180px; height:180px; margin-bottom:20px;}
   }
   .hero .kicker{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:18px;}
   .chip{
@@ -93,10 +97,10 @@
     display:inline-flex; align-items:center; gap:8px; padding:11px 20px; border-radius:11px;
     font-size:14px; font-weight:700; text-decoration:none; cursor:pointer; border:1px solid transparent;
   }
-  .btn-primary{background:var(--text); color:var(--bg);}
-  .btn-primary:hover{opacity:.85;}
+  .btn-primary{background:var(--accent); color:#fff;}
+  .btn-primary:hover{background:var(--accent-hover);}
   .btn-ghost{border-color:var(--line-strong); color:var(--text);}
-  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+  .btn-ghost:hover{border-color:var(--accent-2-text); color:var(--accent-2-text);}
   .hero .meta-row{display:flex; gap:22px; flex-wrap:wrap; justify-content:center; font-size:13.5px; color:var(--text-mute);}
   .hero .meta-row span{display:flex; align-items:center; gap:6px;}
 
@@ -127,11 +131,11 @@
   .tl-item:last-child{padding-bottom:0;}
   .tl-item::before{
     content:""; position:absolute; left:-7px; top:2px; width:12px; height:12px; border-radius:50%;
-    background:var(--accent); border:3px solid var(--bg);
+    background:var(--accent-2); border:3px solid var(--bg);
   }
   .tl-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:4px;}
   .tl-role{font-size:16.5px; font-weight:700;}
-  .tl-org{color:var(--accent); font-weight:600; font-size:14px;}
+  .tl-org{color:var(--accent-2-text); font-weight:600; font-size:14px;}
   .tl-period{font-size:12.5px; color:var(--text-mute); font-variant-numeric:tabular-nums; white-space:nowrap;}
   .tl-desc{color:var(--text-2); font-size:14px; line-height:1.7; max-width:680px;}
 
@@ -226,7 +230,9 @@
 
 <header class="hero">
   <div class="wrap">
-    <img class="avatar" src="assets/img/avatar.jpg" alt="Ussene Carlos Matato">
+    <div class="avatar-frame">
+      <img class="avatar" src="assets/img/avatar.jpg" alt="Ussene Carlos Matato">
+    </div>
     <div class="kicker">
       <span class="chip" data-i18n="hero.chip1">Software Development</span>
       <span class="chip" data-i18n="hero.chip2">QA / Testing</span>
