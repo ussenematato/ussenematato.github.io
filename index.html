@@ -73,12 +73,12 @@
   .hero{padding:72px 0 36px;}
   .hero .wrap{display:flex; flex-direction:column; align-items:center; text-align:center;}
   .avatar{
-    width:184px; height:184px; border-radius:50%; object-fit:cover;
+    width:224px; height:224px; border-radius:50%; object-fit:cover;
     border:3px solid var(--surface); box-shadow:var(--shadow); background:var(--bg-soft);
     margin-bottom:26px;
   }
   @media (max-width:640px){
-    .avatar{width:136px; height:136px; margin-bottom:20px;}
+    .avatar{width:168px; height:168px; margin-bottom:20px;}
   }
   .hero .kicker{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:18px;}
   .chip{
@@ -143,6 +143,7 @@
     background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
     padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px;
   }
+  .proj[hidden]{display:none;}
   .proj .ptag{
     align-self:flex-start; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;
     padding:4px 9px; border-radius:999px;
@@ -151,6 +152,7 @@
   .proj p{margin:0; font-size:13.5px; color:var(--text-2); line-height:1.6; flex:1;}
   .tech-row{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
   .tech-tag{font-size:11px; padding:3px 8px; border-radius:6px; background:var(--bg-soft); color:var(--text-mute); border:1px solid var(--line);}
+  .projects-more{text-align:center; margin-top:28px;}
 
   /* SKILLS */
   .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px 28px;}
@@ -404,17 +406,7 @@
         <div class="tech-row"><span class="tech-tag">Java</span><span class="tech-tag">SQLite</span><span class="tech-tag">Launch4j</span><span class="tech-tag">Inno Setup</span></div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<section id="portfolio">
-  <div class="wrap">
-    <p class="eyebrow" data-i18n="portfolio.eyebrow">Mais trabalho</p>
-    <h2 class="h" data-i18n="portfolio.title">Outros projectos</h2>
-    <div class="projects-grid">
-
-      <div class="proj">
+      <div class="proj proj-extra" hidden>
         <span class="ptag" style="background:var(--accent-fill); color:var(--accent)" data-i18n="other1.tag">Desktop · Java</span>
         <h3 data-i18n="other1.title">Sistema Desktop de Gestão de Centros de Abastecimento</h3>
         <p data-i18n="other1.desc">Sistema desktop para gestão de um centro de abastecimento de água: utilizadores, clientes, leituras de contador, facturação, pagamentos e despesas internas.</p>
@@ -424,7 +416,7 @@
         <a class="btn btn-ghost" style="align-self:flex-start; margin-top:4px;" href="Projects/abast.html" data-i18n="other.cta">👁 Ver projecto</a>
       </div>
 
-      <div class="proj">
+      <div class="proj proj-extra" hidden>
         <span class="ptag" style="background:var(--accent2-fill); color:var(--accent-2)" data-i18n="other2.tag">Web Design · Landing Page</span>
         <h3 data-i18n="other2.title">Landing Page — ArtShot</h3>
         <p data-i18n="other2.desc">Primeira landing page desenvolvida de forma independente, construída apenas com HTML e CSS puro, com layout moderno e responsivo.</p>
@@ -434,7 +426,7 @@
         <a class="btn btn-ghost" style="align-self:flex-start; margin-top:4px;" href="Projects/portfolio-details-landingPageArtShot.html" data-i18n="other.cta">👁 Ver projecto</a>
       </div>
 
-      <div class="proj">
+      <div class="proj proj-extra" hidden>
         <span class="ptag" style="background:var(--accent3-fill); color:var(--accent-3)" data-i18n="other3.tag">Web App · E-commerce</span>
         <h3 data-i18n="other3.title">TechStore — Loja Virtual de Equipamentos Electrónicos</h3>
         <p data-i18n="other3.desc">Aplicação web para compra rápida e segura de equipamentos electrónicos, com pagamentos integrados via M-Pesa, E-Mola e cartão bancário.</p>
@@ -444,7 +436,7 @@
         <a class="btn btn-ghost" style="align-self:flex-start; margin-top:4px;" href="Projects/portfolio-details-techStore.html" data-i18n="other.cta">👁 Ver projecto</a>
       </div>
 
-      <div class="proj">
+      <div class="proj proj-extra" hidden>
         <span class="ptag" style="background:var(--accent-fill); color:var(--accent)" data-i18n="other4.tag">Website Corporativo</span>
         <h3 data-i18n="other4.title">Website — Kuvatla Customizer</h3>
         <p data-i18n="other4.desc">Website corporativo da Kuvatla Customizer, com design moderno e responsivo que destaca a identidade da marca e facilita a navegação.</p>
@@ -454,6 +446,10 @@
         <a class="btn btn-ghost" style="align-self:flex-start; margin-top:4px;" href="Projects/portfolio-details-webKuv.html" data-i18n="other.cta">👁 Ver projecto</a>
       </div>
 
+    </div>
+
+    <div class="projects-more">
+      <button class="btn btn-ghost" id="toggleMoreProjects" type="button" aria-expanded="false" data-i18n="projects.more">Ver mais projectos</button>
     </div>
   </div>
 </section>
@@ -621,7 +617,7 @@
       "proj5.desc":"Controlo de clientes, serviços, peças, pagamentos e estado dos trabalhos numa lavandaria.",
       "proj6.tag":"Desktop · Gestão Financeira","proj6.title":"Sistema de Gestão Financeira Ministerial",
       "proj6.desc":"Aplicação para gestão de contas, controlo de receitas e despesas, e elaboração de relatórios automatizados para reporte, desenvolvida para uso em igrejas.",
-      "portfolio.eyebrow":"Mais trabalho","portfolio.title":"Outros projectos",
+      "projects.more":"Ver mais projectos","projects.less":"Ver menos",
       "other1.tag":"Desktop · Java","other1.title":"Sistema Desktop de Gestão de Centros de Abastecimento",
       "other1.desc":"Sistema desktop para gestão de um centro de abastecimento de água: utilizadores, clientes, leituras de contador, facturação, pagamentos e despesas internas.",
       "other2.tag":"Web Design · Landing Page","other2.title":"Landing Page — ArtShot",
@@ -694,7 +690,7 @@
       "proj5.desc":"Control of customers, services, parts, payments and job status for a laundry business.",
       "proj6.tag":"Desktop · Financial Management","proj6.title":"Ministerial Financial Management System",
       "proj6.desc":"Application for managing accounts, tracking income and expenses, and generating automated reports for churches.",
-      "portfolio.eyebrow":"More work","portfolio.title":"Other projects",
+      "projects.more":"Show more projects","projects.less":"Show less",
       "other1.tag":"Desktop · Java","other1.title":"Water Supply Center Management System",
       "other1.desc":"Desktop system for managing a water supply center: users, clients, meter readings, billing, payments and internal expenses.",
       "other2.tag":"Web Design · Landing Page","other2.title":"Landing Page — ArtShot",
@@ -777,6 +773,20 @@
   }, { threshold:.12 });
   document.querySelectorAll(".pillar, .proj, .edu-item, .info-card, .tl-item").forEach(el=>{
     el.classList.add("reveal"); io.observe(el);
+  });
+
+  const moreBtn = document.getElementById("toggleMoreProjects");
+  const extraProjs = document.querySelectorAll(".proj-extra");
+  let projectsExpanded = false;
+  moreBtn.addEventListener("click", ()=>{
+    projectsExpanded = !projectsExpanded;
+    extraProjs.forEach(el=>{
+      el.hidden = !projectsExpanded;
+      if(projectsExpanded) el.classList.add("in");
+    });
+    moreBtn.setAttribute("aria-expanded", String(projectsExpanded));
+    moreBtn.setAttribute("data-i18n", projectsExpanded ? "projects.less" : "projects.more");
+    moreBtn.innerHTML = content[lang][moreBtn.getAttribute("data-i18n")];
   });
 })();
 </script>
